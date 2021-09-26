@@ -1,0 +1,34 @@
+"""
+ID: kevinxu8
+LANG: PYTHON3
+TASK: ride
+"""
+arr=[1,2,3]
+data=[]
+totals=[]
+count = 0
+
+fin = open("shell.in", "r")
+fout = open("shell.out", "w")
+n = int(fin.readline())
+
+
+for i in range(n):
+	data.append(list(map(int, fin.readline().split())))
+#print("data", data)
+
+for i in range(n):
+	for j in range(n):
+		x = data[j][0] - 1
+		y = data[j][1] - 1
+		arr[x], arr[y] = arr[y], arr[x]
+		if arr[data[j][2]-1] == i + 1:
+			count += 1
+	totals.append(count)
+	count = 0
+	arr = [1,2,3]
+fout.write(str((max(totals))))
+fout.close()
+fin.close()
+
+
